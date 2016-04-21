@@ -11,4 +11,5 @@
 * Media and Camera
 * Location and Sensors
 * Connectivity
+* Text and input
 
