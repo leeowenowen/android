@@ -7,4 +7,5 @@
 * App Manifest
 * User Interface
 * Animation and Graphics
+* Computation
 
