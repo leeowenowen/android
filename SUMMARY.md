@@ -10,4 +10,5 @@
 * Computation
 * Media and Camera
 * Location and Sensors
+* Connectivity
 
