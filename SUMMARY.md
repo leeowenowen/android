@@ -4,4 +4,5 @@
    * App Resources
 * [App Components](chapter1.md)
 * App Resources
+* App Manifest
 
