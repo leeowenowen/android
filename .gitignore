@@ -16,3 +16,5 @@ _book
 *.pdf
 23
 android.jar
+*.swp
+*.swo
