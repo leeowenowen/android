@@ -13,4 +13,5 @@
 * Location and Sensors
 * Connectivity
 * Text and input
+* Administration
 
