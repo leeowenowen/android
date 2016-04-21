@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
    * App Resources
+   * Data Storage
 * [App Components](chapter1.md)
 * App Resources
 * App Manifest
