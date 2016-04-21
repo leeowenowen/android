@@ -9,4 +9,5 @@
 * Animation and Graphics
 * Computation
 * Media and Camera
+* Location and Sensors
 
