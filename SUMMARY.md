@@ -8,4 +8,5 @@
 * User Interface
 * Animation and Graphics
 * Computation
+* Media and Camera
 
