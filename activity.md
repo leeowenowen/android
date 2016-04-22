@@ -44,9 +44,47 @@ Fragment可以不提供UI，你只需要在onCreateView中返回null即可．
   * 如果用xml配置Fragment,需要为其添加唯一标识，使用android:id|android:tag,如果没有
   显式指定，则系统会使用它父亲的id来标识.
 
-
-
-
 ##Loaders
+Loaders是Android3.0开始加入，其主要特点如下:
+  1. 可以在每个Activity和Fragment中使用.
+  2. 用于异步加载数据.
+  3. 监视数据源改变，并发送通知.
+  4. 配置改变的时候会自动重新连接数据源，不需要重新查询．
+Loader是从ContentProvider中异步加载数据的最佳方式．不过可以使用RxJava替换.
 ##Tasks and Back Stack
+Task是一个或者多个Activity组成，Task中的Activity以Stack的形式进出Task的.
+###launchMode
+  * standard
+    默认情况下，每次startActivity系统都会创建一个全新的Activity.
+
+  * singleTop
+    应该叫single if at top.只有该Activity在Task堆栈顶端的时候，不会创建一个全新的，而是回调其onNewIntent
+    ，如果该Activity不在顶端，则其行为与standard一致，会创建一个全新的．
+    
+  * singleTask
+    系统创建一个全新的Task并将该Activity作为根Activity,但之后再启动的Activity可以进入
+    该Task.
+    
+  * singleInstance
+    与singleTask类似，但是系统不会再向其所在的Task插入任何Activity.
+默认情况下，一个Activity会与启动它的Activity在同一个Task,但如果使用ApplicationContext启动
+一个Activity,则没有Task与之关联，需要给定FLAG_ACTIVITY_NEW_TASK标志位.
+
+###Affinity
+相当于Task的标识，如果某个Activity指定了自己所属的Affinity，启动的时候使用FLAG_ACTIVITY_NEW_TASK标志且
+当前已经存在一个有同样Affinity的Task,则不会启动一个新的Task,而是使用该Task.
+###allowTaskReparenting
+###Clear Back Stack
+默认情况下，如果用户离开一个Task比较长的时间，系统就会清除除了root task之外的所有Task. 当用户返回该Task的时候，
+只有Root Task会被Restored.
+
+以下属性只有设置为Task的root activity上才会生效．
+  * alwayRetainTaskState
+    作用于Task的Root Activity.即使用户离开了很长时间,系统也不会清除Task.
+
+  * clearTaskOnLaunch
+    作用于Task的Root Activity.另一个极端，只要用户离开（即使不是很长时间），系统也会清除Task(除跟节点)．
+    
+  * finishOnTaskLaunch
+    作用于单个Activity而不是整个Task,它可以作用于包括根节点在内的所有Activity.
 ##Overview Screen
